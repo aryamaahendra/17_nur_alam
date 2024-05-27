@@ -134,6 +134,11 @@ class DatasetController extends Controller
         $dataset = $request->route('m_dataset');
 
         DB::transaction(function () use ($dataset) {
+            $dataset->load('answers');
+            foreach ($dataset->answers as $answer) {
+                $answer->delete();
+            }
+
             return $dataset->delete();
         });
 
