@@ -11,7 +11,7 @@ import {
 const initDatasetTable = (ID, el) => {
     const url = `${dashboard_url}/dataset/datatable`;
     const table = initDataTable(ID, el, url, {
-        order: [[1, "desc"]],
+        order: [[2, "desc"]],
         columns: [
             {
                 data: "name",

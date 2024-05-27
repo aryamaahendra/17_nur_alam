@@ -92,7 +92,7 @@ class DatasetController extends Controller
 
         $answers = [];
         foreach ($dataset->answers as $item) {
-            $answers[$item->id] = $item->value;
+            $answers[$item->question_id] = $item->value;
         }
 
         return view('dataset.update', compact('dataset', 'questions', 'answers'));

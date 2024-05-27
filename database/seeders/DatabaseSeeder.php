@@ -22,5 +22,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         $this->call(QuestionsTableSeeder::class);
+        $this->call(DatasetsTableSeeder::class);
+        $this->call(DatasetAnswersTableSeeder::class);
     }
 }
