@@ -12,6 +12,31 @@ Route::group([
     'prefix' => 'dashboard'
 ], function () {
 
+    Route::post(
+        'metode/naivebayes/predict',
+        [App\Http\Controllers\Web\MetodeController::class, 'naivebayes_predict']
+    )->name('metode.naivebayes.predict');
+
+    Route::post(
+        'metode/naivebayes/proses',
+        [App\Http\Controllers\Web\MetodeController::class, 'naivebayes_proses']
+    )->name('metode.naivebayes.proses');
+
+    Route::get(
+        'metode/naivebayes',
+        [App\Http\Controllers\Web\MetodeController::class, 'naivebayes']
+    )->name('metode.naivebayes');
+
+    Route::post(
+        'metode/confusionmatrix/proses',
+        [App\Http\Controllers\Web\MetodeController::class, 'confusionmatrix_proses']
+    )->name('metode.confusionmatrix.proses');
+
+    Route::get(
+        'metode/confusionmatrix',
+        [App\Http\Controllers\Web\MetodeController::class, 'confusionmatrix']
+    )->name('metode.confusionmatrix');
+
     Route::get(
         'dataset/datatable',
         [App\Http\Controllers\Web\DatasetController::class, 'data']
