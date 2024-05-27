@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Manajement Asset Diskominfo Sulteng</title>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <title>NAPPII</title>
 
     {{-- Fonts --}}
     <link rel="preconnect" href="https://fonts.bunny.net">
@@ -17,6 +18,14 @@
 </head>
 
 <body class="antialiased min-h-screen w-full flex flex-col justify-between">
+    @if (session()->has('flas-message'))
+        <input type="hidden" name="flash_type" value="{{ session('flas-message')['error'] }}">
+        <input type="hidden" name="flash_message" value="{{ session('flas-message')['message'] }}">
+    @endif
+
+    <div id="toast-wrapper" class="toast toast-bottom items-end toast-end z-50">
+    </div>
+
     <div class="">
         @include('components.layouts.dashboard.navbar')
 

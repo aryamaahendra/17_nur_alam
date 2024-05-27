@@ -1,5 +1,9 @@
 import JQ from "jquery";
-import { initUserTable } from "./datatables";
+import {
+    initDatasetTable,
+    initQuestionTable,
+    initUserTable,
+} from "./datatables";
 
 window.JQ = JQ;
 window.base_url = import.meta.env.VITE_APP_URL;
@@ -11,6 +15,12 @@ JQ(`[datatable]`).each((idx, el) => {
     switch (ID) {
         case "users":
             initUserTable(ID, el);
+            break;
+        case "question":
+            initQuestionTable(ID, el);
+            break;
+        case "dataset":
+            initDatasetTable(ID, el);
             break;
 
         default:

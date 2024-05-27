@@ -45,10 +45,7 @@ class UserConroller extends Controller
         $request->fulfillable();
 
         return redirect()->route('dshb.user.index')
-            ->with('flash-message', [
-                'status' => 'success',
-                'message' => 'user berhasil dibuat',
-            ]);
+            ->with($this->flashMessage(false, 'user berhasil dibuat'));
     }
 
     /**
@@ -75,10 +72,7 @@ class UserConroller extends Controller
         $request->fulfillable();
 
         return redirect()->route('dshb.user.index')
-            ->with('flash-message', [
-                'status' => 'success',
-                'message' => 'user berhasil diubah',
-            ]);
+            ->with($this->flashMessage(false, 'user berhasil diubah'));
     }
 
     /**
@@ -89,9 +83,6 @@ class UserConroller extends Controller
         $request->fulfillable();
 
         return redirect()->route('dshb.user.index')
-            ->with('flash-message', [
-                'status' => 'success',
-                'message' => 'user berhasil dihapus',
-            ]);
+            ->with($this->flashMessage(false, 'user berhasil dihapus'));
     }
 }

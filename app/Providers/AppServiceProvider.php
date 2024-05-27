@@ -24,6 +24,8 @@ class AppServiceProvider extends ServiceProvider
     {
         // Route Explicit Binding
         Route::model('m_user', \App\Models\User::class);
+        Route::model('m_question', \App\Models\Question::class);
+        Route::model('m_dataset', \App\Models\Dataset::class);
 
         Builder::macro('mesearch', function ($attributes, string $searchTerm) {
             $this->where(function (Builder $query) use ($attributes, $searchTerm) {

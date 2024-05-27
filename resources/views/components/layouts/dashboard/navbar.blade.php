@@ -2,7 +2,7 @@
     <div class="border-b">
         <div class="navbar bg-base-100 w-full max-w-6xl mx-auto">
             <div class="">
-                <a class="btn btn-ghost text-xl">daisyUI</a>
+                <a class="btn btn-ghost text-xl">NAPPII</a>
             </div>
 
             <div class="flex-1 flex justify-center items-center">
