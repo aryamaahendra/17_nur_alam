@@ -31,7 +31,15 @@
 
                     <ul tabindex="0"
                         class="menu menu-sm dropdown-content mt-3 z-40 p-2 shadow bg-base-100 rounded-box w-52">
-                        @include('components.layouts.dashboard.partials.menus')
+                        <li>
+                            <form action="{{ route('logout') }}" method="POST">
+                                @csrf
+                                <button type="submit" class="flex items-center py-2 px-4 gap-2">
+                                    <x-icons.database-smile class="h-5 w-5" />
+                                    Logout
+                                </button>
+                            </form>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -50,15 +58,7 @@
                 </div>
                 <ul tabindex="0"
                     class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
-                    <li><a>Item 1</a></li>
-                    <li>
-                        <a>Parent</a>
-                        <ul class="p-2">
-                            <li><a>Submenu 1</a></li>
-                            <li><a>Submenu 2</a></li>
-                        </ul>
-                    </li>
-                    <li><a>Item 3</a></li>
+                    @include('components.layouts.dashboard.partials.menus')
                 </ul>
             </div>
 
