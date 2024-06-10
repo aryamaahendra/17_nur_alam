@@ -18,9 +18,9 @@
                     <x-icons.color-swatch class="h-6 w-6" />
                 </button>
 
-                <button class="btn btn-circle btn-ghost w-12 min-h-12 h-12">
+                {{-- <button class="btn btn-circle btn-ghost w-12 min-h-12 h-12">
                     <x-icons.bell class="h-6 w-6" />
-                </button>
+                </button> --}}
 
                 <div class="dropdown dropdown-end">
                     <div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar">

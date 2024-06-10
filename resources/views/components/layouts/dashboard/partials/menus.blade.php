@@ -2,7 +2,6 @@
     <a href="{{ route('dshb.index') }}" @class(['active' => Route::is('dshb.index')])>
         <x-icons.home class="h-5 w-5" />
         Dsahboard
-        <span class="badge badge-sm">99+</span>
     </a>
 </li>
 <li>
