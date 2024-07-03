@@ -64,5 +64,6 @@ Route::group([
     Route::get('user/datatable', [UserConroller::class, 'data'])->name('user.datatable');
     Route::resource('user', UserConroller::class)->parameters(['user' => 'm_user']);
 
+    Route::get('/data', [App\Http\Controllers\Web\DashboardController::class, 'data'])->name('data');
     Route::get('/', [App\Http\Controllers\Web\DashboardController::class, 'index'])->name('index');
 });

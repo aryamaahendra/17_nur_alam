@@ -2,7 +2,6 @@
 
 @section('content')
     <div class="stats w-full shadow border">
-
         <div class="stat">
             <div class="stat-figure text-secondary">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -42,6 +41,16 @@
             <div class="stat-value">{{ number_format(Cache::get('cm_accuracy', 0) * 100, 2) }}%</div>
             <div class="stat-desc">↘︎ 90 (14%)</div>
         </div>
+    </div>
 
+    <div class="mt-6">
+        <div class="card bg-base-100 shadow border">
+            <div class="card-body">
+                <h2 class="card-title">Hitory Penggunaan</h2>
+                <div class="w-full max-w-xs mx-auto">
+                    <canvas id="acquisitions"></canvas>
+                </div>
+            </div>
+        </div>
     </div>
 @endsection
