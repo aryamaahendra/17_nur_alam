@@ -26,6 +26,7 @@ class AppServiceProvider extends ServiceProvider
         Route::model('m_user', \App\Models\User::class);
         Route::model('m_question', \App\Models\Question::class);
         Route::model('m_dataset', \App\Models\Dataset::class);
+        Route::model('m_people', \App\Models\People::class);
 
         Builder::macro('mesearch', function ($attributes, string $searchTerm) {
             $this->where(function (Builder $query) use ($attributes, $searchTerm) {

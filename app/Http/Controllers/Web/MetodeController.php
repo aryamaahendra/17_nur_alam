@@ -4,36 +4,61 @@ namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
 use App\Models\Dataset;
+use App\Models\History;
+use App\Models\HistoryAnswer;
+use App\Models\People;
 use App\Models\Question;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
 use Phpml\Classification\NaiveBayes;
 use Phpml\Metric\Accuracy;
 use Phpml\Metric\ClassificationReport;
 use Phpml\Metric\ConfusionMatrix;
+use Illuminate\Support\Str;
 
 class MetodeController extends Controller
 {
     public function naivebayes(): View
     {
         $questions = Question::all();
-        return view('metode.niave-bayes', compact('questions'));
+        $peoples = People::all();
+        return view('metode.niave-bayes', compact('questions', 'peoples'));
     }
 
     public function naivebayes_predict(Request $request): RedirectResponse
     {
         $inputs = $request->validate([
             'question' => 'required|array',
-            'question.*' => 'required|boolean'
+            'question.*' => 'required|boolean',
+            'people_id' => 'required|numeric'
         ]);
 
         $model = Cache::get('naivebayes_model');
         $answers = Arr::map($inputs['question'], fn ($value, $key) => (int) $value);
-
         $result =  $model->predict(array_values($answers));
+
+        DB::transaction(function () use ($inputs, $result) {
+            $history = History::create([
+                ...Arr::except($inputs, 'question'),
+                'class' =>  $result
+            ]);
+
+            foreach ($inputs['question'] as $key => $value) {
+                HistoryAnswer::create([
+                    'question_id' => $key,
+                    'history_id' => $history->id,
+                    'value' => $value,
+                ]);
+            }
+
+            return $history;
+        });
 
         return redirect()->route('dshb.metode.naivebayes')
             ->with(['new_class' => $result]);

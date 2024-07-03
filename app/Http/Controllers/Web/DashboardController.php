@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
+use App\Models\History;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -19,8 +20,8 @@ class DashboardController extends Controller
         return response()->json([
             'error' => false,
             'data' => [
-                ['class' => '01', 'count' => 100,],
-                ['class' => '02', 'count' => 120,],
+                ['class' => '1', 'count' => History::where('class', 1)->count('id')],
+                ['class' => '0', 'count' => History::where('class', 0)->count('id')],
             ]
         ]);
     }

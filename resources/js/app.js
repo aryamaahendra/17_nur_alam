@@ -17,12 +17,14 @@ JQ.when(JQ.ready).then(function () {
 });
 
 (async function () {
-    const res = await axios.get(`${dashboard_url}/data`);
-    console.log(res.data.data);
+    const chartEl = document.getElementById("acquisitions");
 
+    if (!chartEl) return;
+
+    const res = await axios.get(`${dashboard_url}/data`);
     const data = res.data.data;
 
-    new Chart(document.getElementById("acquisitions"), {
+    new Chart(chartEl, {
         type: "doughnut",
         data: {
             labels: data.map((row) => row.class),

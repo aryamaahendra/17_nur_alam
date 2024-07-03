@@ -36,9 +36,19 @@
             <form action="{{ route('dshb.metode.naivebayes.predict') }}" method="POST" class="px-4 mb-4">
                 @csrf
 
-                <div class="overflow-x-auto border rounded">
+                <div class="overflow-x-auto border rounded mb-4">
                     @include('dataset.partials.questions')
                 </div>
+
+                <x-forms.select label="Pilih Narapidana" name="people_id">
+                    <option @selected(old('people_id') == '') value="" selected disabled>Pilih NAPI</option>
+                    @forelse ($peoples as $people)
+                        <option @selected(old('people_id') == $people->id) value="{{ $people->id }}">
+                            {{ $people->name }}
+                        </option>
+                    @empty
+                    @endforelse
+                </x-forms.select>
 
                 <div class="flex justify-between items-center mt-4">
                     <div class="">

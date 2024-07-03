@@ -1,6 +1,8 @@
 import JQ from "jquery";
 import {
     initDatasetTable,
+    initHistoryPredictionTable,
+    initPeopleTable,
     initQuestionTable,
     initUserTable,
 } from "./datatables";
@@ -21,6 +23,12 @@ JQ(`[datatable]`).each((idx, el) => {
             break;
         case "dataset":
             initDatasetTable(ID, el);
+            break;
+        case "peoples":
+            initPeopleTable(ID, el);
+            break;
+        case "history-prediction":
+            initHistoryPredictionTable(ID, el);
             break;
 
         default:

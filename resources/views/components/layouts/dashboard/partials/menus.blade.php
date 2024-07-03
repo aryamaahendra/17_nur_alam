@@ -32,12 +32,21 @@
         </ul>
     </details>
 </li>
+
+<li>
+    <a href="{{ route('dshb.history.prediction') }}" @class(['active' => Route::is('dshb.history.prediction')])>
+        <x-icons.history class="h-5 w-5" />
+        History
+    </a>
+</li>
+
 <li>
     <details>
         <summary @class([
             'text-base-100 bg-base-content hover:bg-base-content' =>
                 Route::is('dshb.dataset.*') ||
                 Route::is('dshb.question.*') ||
+                Route::is('dshb.people.*') ||
                 Route::is('dshb.user.*'),
         ])>
             <x-icons.database class="h-5 w-5" />
@@ -56,6 +65,13 @@
                 <a href="{{ route('dshb.question.index') }}" @class(['active' => Route::is('dshb.question.*')])>
                     <x-icons.message class="h-5 w-5" />
                     Pertanyaan
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ route('dshb.people.index') }}" @class(['active' => Route::is('dshb.people.*')])>
+                    <x-icons.users class="h-5 w-5" />
+                    Narapidana
                 </a>
             </li>
 

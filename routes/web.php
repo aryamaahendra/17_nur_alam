@@ -12,6 +12,26 @@ Route::group([
     'prefix' => 'dashboard'
 ], function () {
 
+    Route::get(
+        'history/prediction',
+        [App\Http\Controllers\Web\HistoryController::class, 'prediction']
+    )->name('history.prediction');
+
+    Route::get(
+        'history/prediction/data',
+        [App\Http\Controllers\Web\HistoryController::class, 'prediction_data']
+    )->name('history.prediction.data');
+
+    Route::get(
+        'history/training',
+        [App\Http\Controllers\Web\HistoryController::class, 'training']
+    )->name('history.training');
+
+    Route::get(
+        'history/training/data',
+        [App\Http\Controllers\Web\HistoryController::class, 'training_data']
+    )->name('history.training.data');
+
     Route::post(
         'metode/naivebayes/predict',
         [App\Http\Controllers\Web\MetodeController::class, 'naivebayes_predict']
@@ -56,6 +76,16 @@ Route::group([
         'question',
         App\Http\Controllers\Web\QuestionController::class
     )->parameters(['question' => 'm_question']);
+
+    Route::get(
+        'people/datatable',
+        [App\Http\Controllers\Web\PeopleController::class, 'data']
+    )->name('people.datatable');
+
+    Route::resource(
+        'people',
+        App\Http\Controllers\Web\PeopleController::class
+    )->parameters(['people' => 'm_people']);
 
     /**
      * user resource (CRUD)
