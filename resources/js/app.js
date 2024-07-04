@@ -30,7 +30,7 @@ JQ.when(JQ.ready).then(function () {
             labels: data.map((row) => row.class),
             datasets: [
                 {
-                    label: "Acquisitions by year",
+                    label: "History Pemeriksaan",
                     data: data.map((row) => row.count),
                 },
             ],

@@ -96,11 +96,11 @@
                                 <td class="border w-1">{{ number_format($report->getF1score()[0] * 100, 2) }}%</td>
                                 <td class="border w-1">{{ number_format($report->getF1score()[1] * 100, 2) }}%</td>
                             </tr>
-                            <tr>
+                            {{-- <tr>
                                 <td class="border">Support</td>
                                 <td class="border w-1">{{ number_format($report->getSupport()[0]) }}</td>
                                 <td class="border w-1">{{ number_format($report->getSupport()[1]) }}</td>
-                            </tr>
+                            </tr> --}}
                         </tbody>
                     </table>
                 </div>
